@@ -1,0 +1,58 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import cartell from '@assets/images/Cartell_I_laLLuitaContinua-A3cat.jpg';
+import caratula from '@assets/images/caratula_DVD_CAT.jpg';
+---
+
+<Layout title="Materials — I la Lluita Continua" description="Materials del documental I la Lluita Continua: cartell, DVD i proposta didàctica.">
+	<main class="container py-16 pt-20">
+		<h1 class="font-heading text-5xl md:text-7xl font-bold mb-16">Materials</h1>
+
+		<div class="max-w-2xl">
+			<section class="mb-14">
+				<h2 class="font-heading text-xs uppercase tracking-widest text-m-red-500 mb-6">Cartell i DVD</h2>
+				<p class="font-body text-xl leading-relaxed mb-6">
+					Disseny gràfic de <strong>Pilar Villuendas</strong> i <strong>Alícia Gómez Villuendas</strong>.
+				</p>
+				<p class="font-body text-xl leading-relaxed mb-8">
+					El documental es troba disponible en format DVD. Per a sol·licitar-lo, contacteu a
+					<a href="mailto:info@lluitacontinua.cat">info@lluitacontinua.cat</a>.
+				</p>
+				<div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+					<figure>
+						<Image
+							src={cartell}
+							alt="Cartell I la Lluita Continua (format A3)"
+							class="w-full object-contain border border-black/10"
+						/>
+						<figcaption class="font-heading text-xs text-m-gray-500 uppercase tracking-widest mt-2">Cartell A3</figcaption>
+					</figure>
+					<figure>
+						<Image
+							src={caratula}
+							alt="Caràtula DVD I la Lluita Continua"
+							class="w-full object-contain border border-black/10"
+						/>
+						<figcaption class="font-heading text-xs text-m-gray-500 uppercase tracking-widest mt-2">Caràtula DVD</figcaption>
+					</figure>
+				</div>
+			</section>
+
+			<section class="mb-14">
+				<h2 class="font-heading text-xs uppercase tracking-widest text-m-red-500 mb-6">Proposta didàctica</h2>
+				<p class="font-body text-xl leading-relaxed mb-4">
+					Ramon Breu ha elaborat una proposta didàctica per a alumnes de 4t d'ESO al voltant del documental, disponible a:
+				</p>
+				<a
+					href="http://cinescola.info/"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="inline-block font-heading text-xs uppercase tracking-widest border border-black px-6 py-3 hover:bg-black hover:text-white transition-colors no-underline! border-solid!"
+				>
+					cinescola.info
+				</a>
+			</section>
+		</div>
+	</main>
+</Layout>

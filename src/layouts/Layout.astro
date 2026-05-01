@@ -1,8 +1,8 @@
 ---
 import { ClientRouter } from 'astro:transitions';
-import { languages, hreflangMap, ogLocales } from '@i18n/ui';
+import { languages, hreflangMap, ogLocales, siteUrls, routes } from '@i18n/ui';
 import type { LangType } from '@i18n/ui';
-import { getLangFromUrl, useTranslations, useTranslatedPath, getRouteFromUrl } from '@i18n/utils';
+import { useTranslations, getRouteFromUrl } from '@i18n/utils';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import '@styles/fonts.css';
@@ -14,7 +14,7 @@ interface Props {
 	ogImage?: string
 }
 
-const { currentLocale, props, site, url } = Astro;
+const { props, site, url } = Astro;
 
 const {
 	title,
@@ -22,26 +22,30 @@ const {
 	ogImage,
 } = props;
 
-const lang = getLangFromUrl(url);
-const translateString = useTranslations(lang);
-const translatePath = useTranslatedPath(lang);
-const routeKey = getRouteFromUrl(url);
+const lang = (Astro.currentLocale ?? 'ca') as LangType;
+const t = useTranslations(lang);
+const routeKey = getRouteFromUrl(url, Astro.currentLocale);
 const canonicalUrl = new URL(url.pathname, site);
-const siteName = translateString('title');
+const siteName = t('title');
 const ogLocale = ogLocales[lang];
-const alternateLinks = (Object.keys(languages) as LangType[]).map((l) => ({
-	hreflang: hreflangMap[l],
-	href: new URL(translatePath(routeKey ?? '/', l), site).href,
-}))
+
+const alternateLinks = (Object.keys(languages) as LangType[]).map((l) => {
+	const otherRoutes = routes[l] ?? {};
+	const path = routeKey && routeKey in otherRoutes ? `/${otherRoutes[routeKey]}` : '/';
+	return {
+		hreflang: hreflangMap[l],
+		href: `${siteUrls[l]}${path}`,
+	};
+});
 ---
 
 <!doctype html>
-<html lang={currentLocale}>
+<html lang={Astro.currentLocale}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="canonical" href={canonicalUrl.href} />
 		{alternateLinks.map(({ hreflang, href }) => (
@@ -56,7 +60,7 @@ const alternateLinks = (Object.keys(languages) as LangType[]).map((l) => ({
 		{ogImage && <meta property="og:image" content={ogImage} />}
 		<ClientRouter />
 	</head>
-	<body class="bg-background">
+	<body id="top">
 		<Header />
 		<slot />
 		<Footer />

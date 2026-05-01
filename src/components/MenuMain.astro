@@ -1,24 +1,39 @@
 ---
-import { getLangFromUrl, useTranslations, useTranslatedPath } from '@i18n/utils';
+import { useTranslations, useTranslatedPath } from '@i18n/utils';
+import type { LangType } from '@i18n/ui';
 
-const lang = getLangFromUrl(Astro.url);
-const translateString = useTranslations(lang);
-const translatePath = useTranslatedPath(lang);
+const lang = (Astro.currentLocale ?? 'ca') as LangType;
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang, Astro.currentLocale);
+
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+	{ key: 'projections', label: t('navProjections') },
+	{ key: 'materials', label: t('navMaterials') },
+	{ key: 'press', label: t('navPress') },
+	{ key: 'directing', label: t('navDirecting') },
+] as const;
 ---
 
-<nav class="fixed lg:static top-0 left-0 right-0 h-4/6 lg:h-auto lg:w-auto bg-m-orange-500 lg:bg-transparent z-10 lg:z-auto lg:mx-2">
-	<div class="grid lg:static place-items-center h-full lg:h-auto">
-		<ul class="flex gap-x-2 flex-col md:flex-row text-4xl lg:text-sm">
-			<li class="lg:mx-2">
-				<a href={translatePath('/')}>
-					{translateString('navHome')}
-				</a>
-			</li>
-			<li class="lg:mx-2">
-				<a href={translatePath('ask')}>
-					{translateString('navPage1')}
-				</a>
-			</li>
-		</ul>
-	</div>
+<nav>
+	<ul class="flex flex-col lg:flex-row gap-6 lg:gap-0">
+		{navItems.map(({ key, label }) => {
+			const href = translatePath(`/${key}`);
+			const isActive = currentPath.includes(key) || currentPath.includes((translatePath(`/${key}`)));
+			return (
+				<li>
+					<a
+						href={href}
+						class:list={[
+							"font-heading text-2xl lg:text-xs uppercase tracking-widest border-none! px-0 lg:px-3 transition-colors",
+							isActive ? "text-m-red-500" : "hover:text-m-red-500"
+						]}
+					>
+						{label}
+					</a>
+				</li>
+			);
+		})}
+	</ul>
 </nav>

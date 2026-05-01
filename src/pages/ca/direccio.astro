@@ -1,0 +1,97 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import foto from '@assets/images/fotoLlucia-1.jpg';
+import cvCat from '@assets/images/CVLlucia.pdf';
+import cvEng from '@assets/images/CV-LLÚCIA-ANGLÈS.pdf';
+import teaserEsp from '@assets/videos/teaser-la-lucha-continua-esp-1.mp4';
+import safSub from '@assets/images/SAF-SUB-.mov';
+---
+
+<Layout title="Direcció — I la Lluita Continua" description="Llúcia Oliva, directora i guionista del documental I la Lluita Continua.">
+	<main class="container py-16 pt-20">
+		<h1 class="font-heading text-5xl md:text-7xl font-bold mb-16">Direcció</h1>
+
+		<div class="grid md:grid-cols-3 gap-12 mb-16">
+			<div class="md:col-span-2 max-w-2xl">
+				<p class="font-body text-xl leading-relaxed mb-6">
+					<strong>Llúcia Oliva</strong> és periodista i documentalista independent. <em>I la lluita continua</em> és el seu tercer documental, centrat en la preservació de la memòria oral de la resistència a la dictadura franquista.
+				</p>
+				<p class="font-body text-xl leading-relaxed mb-6">
+					Ha estat 20 anys a TVE com a corresponsal i enviada especial. Va ser corresponsal a Moscou durant la dissolució de la Unió Soviètica, i primera corresponsal de TV3 als Estats Units durant el mandat de Reagan.
+				</p>
+				<p class="font-body text-xl leading-relaxed mb-6">
+					Ha format periodistes en diverses universitats i empreses de televisió. Ha coescrit <em>Las noticias en Radio y Televisión</em>, obra de referència en el periodisme audiovisual.
+				</p>
+
+				<h2 class="font-heading text-xs uppercase tracking-widest text-m-red-500 mb-4 mt-10">Documentals anteriors</h2>
+				<ul class="space-y-2 font-body text-xl mb-8">
+					<li><em>Hereus d'un cardenal proscrit</em> — Premi MemoriReus 2018</li>
+					<li><em>Santuaris de l'antifranquisme</em> — Emès a Sense Ficció (TV3)</li>
+					<li><em>Pesadillas Americanas</em> — Premi AAHJ al millor documental 2009</li>
+					<li><em>En Nombre de Dios</em> — Premi AAHJ al millor documental 2006</li>
+					<li><em>Sierra Leone, marcados por la guerra</em> — Premi Associació de Premsa de Madrid 2006</li>
+					<li><em>Objetivo: matar a Franco</em> (1984)</li>
+				</ul>
+
+				<h2 class="font-heading text-xs uppercase tracking-widest text-m-red-500 mb-4 mt-10">Formació</h2>
+				<ul class="space-y-2 font-body text-xl mb-8">
+					<li>Periodisme i filologia — Universitat Autònoma de Barcelona</li>
+					<li>Beca Fulbright — University of Wisconsin–Madison (1996)</li>
+					<li>Beca Fulbright — American University, Washington D.C. (1986)</li>
+				</ul>
+			</div>
+			<div class="md:col-span-1">
+				<Image
+					src={foto}
+					alt="Llúcia Oliva, directora"
+					class="w-full object-cover"
+				/>
+			</div>
+		</div>
+
+		<section class="mb-16 border-t border-black/10 pt-12">
+			<h2 class="font-heading text-sm uppercase tracking-widest mb-6">Descarregar CV</h2>
+			<div class="flex flex-wrap gap-4">
+				<a
+					href={cvCat}
+					download
+					class="inline-block font-heading text-xs uppercase tracking-widest border border-black px-6 py-3 hover:bg-black hover:text-white transition-colors no-underline! border-solid!"
+				>
+					CV en Català
+				</a>
+				<a
+					href={cvEng}
+					download
+					class="inline-block font-heading text-xs uppercase tracking-widest border border-black px-6 py-3 hover:bg-black hover:text-white transition-colors no-underline! border-solid!"
+				>
+					CV in English
+				</a>
+			</div>
+		</section>
+
+		<section class="border-t border-black/10 pt-12">
+			<h2 class="font-heading text-sm uppercase tracking-widest mb-8">Teasers in English</h2>
+			<div class="grid md:grid-cols-2 gap-8">
+				<div>
+					<video
+						class="w-full aspect-video bg-black"
+						controls
+						preload="metadata"
+						src={teaserEsp}
+					></video>
+					<p class="font-heading text-xs text-m-gray-500 uppercase tracking-widest mt-2">Teaser versió castellà</p>
+				</div>
+				<div>
+					<video
+						class="w-full aspect-video bg-black"
+						controls
+						preload="metadata"
+						src={safSub}
+					></video>
+					<p class="font-heading text-xs text-m-gray-500 uppercase tracking-widest mt-2">Teaser amb subtítols en anglès</p>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>

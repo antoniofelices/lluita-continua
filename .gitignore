@@ -1,5 +1,7 @@
 # build output
 dist/
+dist-ca/
+dist-es/
 
 # generated types
 .astro/
@@ -27,3 +29,5 @@ pnpm-debug.log*
 /docs
 /src/assets/images
 /src/assets/videos
+.vscode/*
+!.vscode/extensions.json
