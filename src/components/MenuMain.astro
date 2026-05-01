@@ -17,7 +17,7 @@ const navItems = [
 ---
 
 <nav>
-	<ul class="flex flex-col lg:flex-row gap-6 lg:gap-0">
+	<ul class="flex flex-col lg:flex-row gap-6 lg:gap-0 m-0">
 		{navItems.map(({ key, label }) => {
 			const href = translatePath(`/${key}`);
 			const isActive = currentPath.includes(key) || currentPath.includes((translatePath(`/${key}`)));
