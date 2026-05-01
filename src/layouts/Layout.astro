@@ -1,0 +1,64 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import { languages, hreflangMap, ogLocales } from '@i18n/ui';
+import type { LangType } from '@i18n/ui';
+import { getLangFromUrl, useTranslations, useTranslatedPath, getRouteFromUrl } from '@i18n/utils';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import '@styles/fonts.css';
+import '@styles/global.css';
+
+interface Props {
+	title: string
+	description?: string
+	ogImage?: string
+}
+
+const { currentLocale, props, site, url } = Astro;
+
+const {
+	title,
+	description,
+	ogImage,
+} = props;
+
+const lang = getLangFromUrl(url);
+const translateString = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+const routeKey = getRouteFromUrl(url);
+const canonicalUrl = new URL(url.pathname, site);
+const siteName = translateString('title');
+const ogLocale = ogLocales[lang];
+const alternateLinks = (Object.keys(languages) as LangType[]).map((l) => ({
+	hreflang: hreflangMap[l],
+	href: new URL(translatePath(routeKey ?? '/', l), site).href,
+}))
+---
+
+<!doctype html>
+<html lang={currentLocale}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="canonical" href={canonicalUrl.href} />
+		{alternateLinks.map(({ hreflang, href }) => (
+			<link rel="alternate" hreflang={hreflang} href={href} />
+		))}
+		<title>{title}</title>
+		<meta property="og:locale" content={ogLocale} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalUrl.href} />
+		<meta property="og:site_name" content={siteName} />
+		{ogImage && <meta property="og:image" content={ogImage} />}
+		<ClientRouter />
+	</head>
+	<body class="bg-background">
+		<Header />
+		<slot />
+		<Footer />
+	</body>
+</html>

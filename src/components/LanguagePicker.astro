@@ -1,0 +1,19 @@
+---
+import { languages } from '@i18n/ui';
+import { getLangFromUrl, useTranslatedPath, getRouteFromUrl } from '@i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+const route = getRouteFromUrl(Astro.url);
+---
+
+<nav class="flex items-center mx-2">
+	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" arial-hidden="true" class="feather feather-globe mr-2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+	<ul class="flex gap-x-2 text-xs md:text-sm uppercase font-light">
+		{Object.entries(languages).map(([lang]) => (
+			<li>
+      			<a href={translatePath(`/${route ? route : ''}`, lang)}>{lang}</a>
+			</li>
+		))}
+	</ul>
+</nav>

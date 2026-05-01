@@ -1,0 +1,21 @@
+{
+  "name": "lluitacontinua",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build:ca": "astro build --config astro.config.ca.mjs",
+    "build:es": "astro build --config astro.config.es.mjs",
+    "build": "npm run build:ca && npm run build:es",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.2.4",
+    "astro": "^6.2.1",
+    "tailwindcss": "^4.2.4"
+  }
+}

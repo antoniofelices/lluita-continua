@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "cormorant-garamond";
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url(/fonts/cormorant-garamond/CormorantGaramond-Regular.woff2)
+    format("woff2");
+}
+
+@font-face {
+  font-family: "cormorant-garamond";
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url(/fonts/cormorant-garamond/CormorantGaramond-Bold.woff2)
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(/fonts/inter/Inter-upright-var.woff2) format("woff2");
+}
