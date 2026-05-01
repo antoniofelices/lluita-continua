@@ -1,7 +1,19 @@
 ---
+import { useTranslations } from '@i18n/utils';
+import type { LangType } from '@i18n/ui';
+import {ArrowUp} from '@lucide/astro'
+const lang = (Astro.currentLocale ?? 'ca') as LangType;
+const t = useTranslations(lang);
 ---
 
-<footer class="">
-	<section class="">
-	</section>
+<footer class="border-t border-black/10 mt-24 py-8">
+	<div class="container flex justify-between items-center font-heading">
+		<p class="text-xs! text-m-gray-500 uppercase tracking-widest mb-0">{t('footerCopyright')}</p>
+		<a
+			href="#top"
+			class="text-xs text-m-gray-500 uppercase tracking-widest hover:text-black transition-colors border-none! inline-flex gap-2 items-center"
+		>
+			<ArrowUp size={12}/> {t('footerScrollTop')}
+		</a>
+	</div>
 </footer>

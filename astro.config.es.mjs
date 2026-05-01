@@ -2,13 +2,12 @@
 import { defineConfig } from "astro/config"
 import tailwindcss from "@tailwindcss/vite"
 
-// Dev config: both locales available, ca is default (no prefix)
 export default defineConfig({
-  site: "https://lluitacontinua.cat",
-  outDir: "./dist",
+  site: "https://luchacontinua.es",
+  outDir: "./dist-es",
   i18n: {
-    defaultLocale: "ca",
-    locales: ["ca", "es"],
+    defaultLocale: "es",
+    locales: ["es"],
     routing: { prefixDefaultLocale: false },
   },
   vite: { plugins: [tailwindcss()] },

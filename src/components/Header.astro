@@ -1,23 +1,60 @@
 ---
-import MainMenu from './MenuMain.astro'
+import MenuMain from './MenuMain.astro'
 import LanguagePicker from './LanguagePicker.astro'
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
-const lang = getLangFromUrl(Astro.url);
-const translateString = useTranslations(lang);
+import { useTranslations, useTranslatedPath } from '@i18n/utils';
+import type { LangType } from '@i18n/ui';
+
+const lang = (Astro.currentLocale ?? 'ca') as LangType;
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang, Astro.currentLocale);
 ---
 
-<header class={`absolute w-lvw py-4`}>
-	<div class="container flex justify-between items-center">
-		<div class="flex items-center">
-			<button id="mobile-dropdown-toggle" class="p-2 mobile-dropdown-toggle order-last static lg:hidden" type="button">
-				<span class="sr-only">{translateString('accessMenu')}</span>
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" arial-hidden="true" class="close absolute z-20 top-20 right-20 hidden" id="icon-close"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> 
-				<svg width="32" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" arial-hidden="true" class="open" id="icon-open"> <path d="m 0,4.7830688 h 24 v 2.4 H 0 Z"></path> <path d="m 0,16.816931 h 22 v 2.4 H 0 Z"></path> <path d="m 0,10.8 h 20 v 2.4 H 0 Z"></path> </svg>
+<header class="sticky top-0 z-50 bg-white border-b border-black/10">
+	<div class="container flex justify-between items-center h-16">
+		<a href={translatePath('/')} class="flex items-baseline gap-3 no-underline! border-none!">
+			<span class="font-heading text-sm font-bold uppercase tracking-widest text-black">{t('title')}</span>
+			<span class="text-xs text-m-gray-500 uppercase tracking-widest hidden md:inline">{t('tagline')}</span>
+		</a>
+		<div class="flex items-center gap-2">
+			<button
+				id="mobile-menu-btn"
+				class="lg:hidden p-2"
+				type="button"
+				aria-label={t('accessMenu')}
+			>
+				<svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="22" height="18" viewBox="0 0 22 18" fill="currentColor" aria-hidden="true">
+					<rect y="0" width="22" height="2.5" rx="1"/>
+					<rect y="7.75" width="18" height="2.5" rx="1"/>
+					<rect y="15.5" width="14" height="2.5" rx="1"/>
+				</svg>
+				<svg id="icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+				</svg>
 			</button>
-			<div id="container-navigation" class="hidden lg:block">
-				<MainMenu />
+			<div id="desktop-nav" class="hidden lg:flex items-center">
+				<MenuMain />
 			</div>
 			<LanguagePicker />
 		</div>
 	</div>
+	<div id="mobile-nav" class="hidden lg:hidden border-t border-black/10 bg-white">
+		<div class="container py-6">
+			<MenuMain />
+		</div>
+	</div>
 </header>
+
+<script>
+	const btn = document.getElementById('mobile-menu-btn');
+	const mobileNav = document.getElementById('mobile-nav');
+	const iconOpen = document.getElementById('icon-open');
+	const iconClose = document.getElementById('icon-close');
+
+	btn?.addEventListener('click', () => {
+		const isOpen = !mobileNav?.classList.contains('hidden');
+		mobileNav?.classList.toggle('hidden', isOpen);
+		iconOpen?.classList.toggle('hidden', !isOpen);
+		iconClose?.classList.toggle('hidden', isOpen);
+		btn.classList.toggle('navigation-open', !isOpen);
+	});
+</script>
