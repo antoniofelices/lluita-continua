@@ -7,13 +7,16 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build:ca": "astro build --config astro.config.ca.mjs",
-    "build:es": "astro build --config astro.config.es.mjs",
+    "dev:ca": "LOCALE=ca astro dev",
+    "dev:es": "LOCALE=es astro dev",
+    "build:ca": "LOCALE=ca astro build",
+    "build:es": "LOCALE=es astro build",
     "build": "npm run build:ca && npm run build:es",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/mdx": "^5.0.4",
     "@lucide/astro": "^1.14.0",
     "@tailwindcss/vite": "^4.2.4",
     "astro": "^6.2.1",

@@ -102,8 +102,7 @@
   }
   p,
   ul {
-    @apply leading-relaxed text-l md:text-xl lg:text-2xl;
-    margin-bottom: 1rem;
+    @apply leading-relaxed text-l md:text-xl lg:text-2xl mb-6;
   }
   body:has(button.navigation-open) {
     overflow: hidden;

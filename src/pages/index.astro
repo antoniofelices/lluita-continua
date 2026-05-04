@@ -1,0 +1,15 @@
+---
+import { getCollection, render } from 'astro:content'
+import Layout from '@layouts/Layout.astro'
+
+const lang = import.meta.env.LOCALE ?? 'ca'
+const allPages = await getCollection('pages')
+const home = allPages.find(p => p.data.lang === lang && p.data.slug === 'home')
+
+if (!home) throw new Error(`No home page found for lang: ${lang}`)
+
+const { Content } = await render(home)
+---
+<Layout title={home.data.title} description={home.data.description} slug="home">
+	<Content />
+</Layout>

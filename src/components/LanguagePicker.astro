@@ -1,37 +1,22 @@
 ---
-import { languages, siteUrls, routes } from '@i18n/ui';
-import type { LangType } from '@i18n/ui';
-import { getRouteFromUrl } from '@i18n/utils';
+import { otherLang, siteUrls, slugToAltSlug } from '@i18n/index.ts'
 
-const lang = (Astro.currentLocale ?? 'ca') as LangType;
-const routeKey = getRouteFromUrl(Astro.url, Astro.currentLocale);
+const currentSlug = Astro.url.pathname.replace(/^\//, '').replace(/\/$/, '');
+const altSlug = slugToAltSlug[currentSlug] ?? '';
+const altPath = altSlug ? `/${altSlug}` : '/';
 
-function getOtherLangHref(otherLang: LangType): string {
-	const otherRoutes = routes[otherLang] ?? {};
-	const path = routeKey && routeKey in otherRoutes ? `/${otherRoutes[routeKey]}` : '/';
-
-	if (import.meta.env.DEV) {
-		// In dev: ca is default (no prefix), es has /es/ prefix
-		return otherLang === 'ca' ? path : `/${otherLang}${path}`;
-	}
-
-	return `${siteUrls[otherLang]}${path}`;
-}
-
-const otherLangs = (Object.keys(languages) as LangType[]).filter((l) => l !== lang);
+const href = `${siteUrls[otherLang]}${altPath}`;
 ---
 
 <nav class="flex items-center ml-3">
 	<ul class="flex gap-x-2 m-0">
-		{otherLangs.map((otherLang) => (
-			<li>
-				<a
-					href={getOtherLangHref(otherLang)}
-					class="font-heading text-xs uppercase tracking-widest hover:text-m-red-500 transition-colors border-none!"
-				>
-					{otherLang === 'ca' ? 'CAT' : 'CAST'}
-				</a>
-			</li>
-		))}
+		<li>
+			<a
+				href={href}
+				class="font-heading text-xs uppercase tracking-widest hover:text-m-red-500 transition-colors border-none!"
+			>
+				{otherLang === 'ca' ? 'CAT' : 'CAST'}
+			</a>
+		</li>
 	</ul>
 </nav>

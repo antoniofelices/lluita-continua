@@ -1,13 +1,11 @@
 ---
 import { ArrowRight } from '@lucide/astro';
-import type { Projection } from '@types/projections';
-import { useTranslations } from '@i18n/utils';
-import type { LangType } from '@i18n/ui';
+import type { Projection } from '@projectTypes/projections';
+import { t } from '@i18n/index.ts';
 
 type Props = Projection;
 
 const { date, place, city, description, link } = Astro.props;
-const t = useTranslations((Astro.currentLocale ?? 'ca') as LangType);
 ---
 
 <li>
@@ -22,6 +20,6 @@ const t = useTranslations((Astro.currentLocale ?? 'ca') as LangType);
 	{link &&
 		<>
 		<br/>
-		<a href={link} target="_blank" rel="noopener noreferrer" class="text-sm inline-flex gap-2 items-center"><span>{t('moreInfo')}</span><ArrowRight size={12}/></a>
+		<a href={link} target="_blank" rel="noopener noreferrer" class="text-sm inline-flex gap-2 items-center"><span>{t.moreInfo}</span><ArrowRight size={12}/></a>
 	</>}
 </li>

@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content'
+import { t } from '@i18n/index.ts'
+import ListItemProjection from './ListItemProjection.astro'
+
+const all = await getCollection('projections', p => p.data.lang === import.meta.env.LOCALE)
+const projections = all.filter(p => !p.data.cancelled).sort((a, b) => a.id.localeCompare(b.id))
+const cancelled = all.filter(p => p.data.cancelled).sort((a, b) => a.id.localeCompare(b.id))
+---
+
+<section class="mb-14">
+	<h2 class="font-heading text-xs uppercase tracking-widest text-m-red-500 mb-6">{t.projections.done}</h2>
+	<ul class="space-y-3">
+		{projections.map(p => <ListItemProjection {...p.data} />)}
+	</ul>
+</section>
+
+<section class="mb-14">
+	<h2 class="font-heading text-xs uppercase tracking-widest text-m-red-500 mb-6">{t.projections.cancelled}</h2>
+	<ul class="space-y-3">
+		{cancelled.map(({ data: { date, city } }) => (
+			<li>
+				<span class="text-m-gray-500 font-heading text-xs">{date}</span><br/>
+				{city}
+			</li>
+		))}
+	</ul>
+</section>
