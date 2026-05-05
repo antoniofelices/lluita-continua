@@ -7,10 +7,8 @@ description: Llúcia Oliva, directora i guionista del documental I la Lluita Con
 
 import { Image } from "astro:assets"
 import foto from "@assets/images/fotoLlucia-1.jpg"
-import cvCat from "@assets/images/cv-llucia-oliva-ca.pdf"
-import cvEng from "@assets/images/cv-llucia-oliva-en.pdf"
-import teaserEsp from "@assets/videos/teaser-la-lucha-continua-esp-1.mp4"
-import safSub from "@assets/videos/saf-sub.mov"
+import cvCat from "@assets/pdfs/cv-llucia-oliva-ca.pdf"
+import cvEng from "@assets/pdfs/cv-llucia-oliva-en.pdf"
 
 <main class="container py-16 pt-20">
 	<h1 class="font-heading text-5xl md:text-7xl font-bold mb-16">Direcció</h1>
@@ -50,36 +48,12 @@ import safSub from "@assets/videos/saf-sub.mov"
     			href={cvCat}
     			download
     			class="inline-block font-heading text-xs uppercase tracking-widest border border-black px-6 py-3 hover:bg-black hover:text-white transition-colors no-underline! border-solid!"
-    		> CV en Català</a>
+    		>CV en Català</a>
     		<a
     			href={cvEng}
     			download
     			class="inline-block font-heading text-xs uppercase tracking-widest border border-black px-6 py-3 hover:bg-black hover:text-white transition-colors no-underline! border-solid!"
     		>CV in English</a>
-    	</div>
-    </section>
-
-    <section class="border-t border-black/10 pt-12">
-    	<h2 class="font-heading text-sm uppercase tracking-widest mb-8">Teasers in English</h2>
-    	<div class="grid md:grid-cols-2 gap-8">
-    		<div>
-    			<video
-    				class="w-full aspect-video bg-black"
-    				controls
-    				preload="metadata"
-    				src={teaserEsp}
-    			></video>
-    			<p class="font-heading text-xs text-m-gray-500 uppercase tracking-widest mt-2">Teaser versió castellà</p>
-    		</div>
-    		<div>
-    			<video
-    				class="w-full aspect-video bg-black"
-    				controls
-    				preload="metadata"
-    				src={safSub}
-    			></video>
-    			<p class="font-heading text-xs text-m-gray-500 uppercase tracking-widest mt-2">Teaser amb subtítols en anglès</p>
-    		</div>
     	</div>
     </section>
 

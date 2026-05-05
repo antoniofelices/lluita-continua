@@ -40,16 +40,20 @@ import { t } from '@i18n/index.ts';
 </header>
 
 <script>
-	const btn = document.getElementById('mobile-menu-btn');
-	const mobileNav = document.getElementById('mobile-nav');
-	const iconOpen = document.getElementById('icon-open');
-	const iconClose = document.getElementById('icon-close');
+	function initMobileMenu() {
+		const btn = document.getElementById('mobile-menu-btn');
+		const mobileNav = document.getElementById('mobile-nav');
+		const iconOpen = document.getElementById('icon-open');
+		const iconClose = document.getElementById('icon-close');
 
-	btn?.addEventListener('click', () => {
-		const isOpen = !mobileNav?.classList.contains('hidden');
-		mobileNav?.classList.toggle('hidden', isOpen);
-		iconOpen?.classList.toggle('hidden', !isOpen);
-		iconClose?.classList.toggle('hidden', isOpen);
-		btn.classList.toggle('navigation-open', !isOpen);
-	});
+		btn?.addEventListener('click', () => {
+			const isOpen = !mobileNav?.classList.contains('hidden');
+			mobileNav?.classList.toggle('hidden', isOpen);
+			iconOpen?.classList.toggle('hidden', !isOpen);
+			iconClose?.classList.toggle('hidden', isOpen);
+			btn?.classList.toggle('navigation-open', !isOpen);
+		});
+	}
+
+	document.addEventListener('astro:page-load', initMobileMenu);
 </script>
