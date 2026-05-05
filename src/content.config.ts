@@ -1,7 +1,7 @@
 import { defineCollection, z } from "astro:content"
 import { glob } from "astro/loaders"
-import projectionsCA from "./content/projections/ca.json"
-import projectionsES from "./content/projections/es.json"
+import projectionsCA from "@content/projections/ca.json"
+import projectionsES from "@content/projections/es.json"
 
 const pages = defineCollection({
   loader: glob({
@@ -27,7 +27,7 @@ type RawProjection = {
 
 function toEntries(
   data: { projections: RawProjection[]; cancelled: RawProjection[] },
-  lang: "ca" | "es"
+  lang: "ca" | "es",
 ) {
   return [
     ...data.projections.map((p, i) => ({
