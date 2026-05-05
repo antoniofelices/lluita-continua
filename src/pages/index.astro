@@ -1,8 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content'
 import Layout from '@layouts/Layout.astro'
+import { lang } from '@i18n/index'
 
-const lang = import.meta.env.LOCALE ?? 'ca'
 const allPages = await getCollection('pages')
 const home = allPages.find(p => p.data.lang === lang && p.data.slug === 'home')
 
