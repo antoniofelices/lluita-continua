@@ -1,0 +1,44 @@
+---
+lang: ca
+slug: projeccions
+title: Projeccions
+description: Projeccions del documental I la Lluita Continua. Del camp a la construcció de Catalunya.
+---
+
+import { Image } from 'astro:assets'
+import ProjectionsList from '@components/ProjectionsList.astro'
+import img1 from '@assets/images/IMG_20191127_191423_resized_20191218_042936362.jpg'
+import img2 from '@assets/images/aguilas_2023.jpg'
+import img3 from '@assets/images/2023_badalona-2.jpg'
+import img4 from '@assets/images/Madrid_12_05_2021-1.jpg'
+import img5 from '@assets/images/Esparraguera_2020-1.jpg'
+
+<main class="container py-16 pt-20">
+	<h1 class="font-heading text-5xl md:text-8xl font-bold mb-16">Projeccions</h1>
+
+	<div class="max-w-2xl">
+		<section class="mb-14">
+			<h2 class="font-heading text-xs uppercase tracking-widest text-m-red-500 mb-6">Programades</h2>
+			<p>Durada: 1 hora</p>
+			<p>
+				Per sol·licitar una projecció, contacteu a
+				<a href="mailto:info@lluitacontinua.cat">info@lluitacontinua.cat</a>
+			</p>
+		</section>
+
+		<ProjectionsList />
+	</div>
+
+	<section class="mt-16">
+		<h2 class="font-heading text-xs uppercase tracking-widest text-m-red-500 mb-6">
+			Alguns cartells de presentacions
+		</h2>
+		<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+			<Image src={img1} alt="Projecció novembre 2019" class="w-full aspect-square object-cover" />
+			<Image src={img2} alt="Projecció Águilas 2023" class="w-full aspect-square object-cover" />
+			<Image src={img3} alt="Projecció Badalona 2023" class="w-full aspect-square object-cover" />
+			<Image src={img4} alt="Projecció Madrid 2021" class="w-full aspect-square object-cover" />
+			<Image src={img5} alt="Projecció Esparraguera 2020" class="w-full aspect-square object-cover" />
+		</div>
+	</section>
+</main>

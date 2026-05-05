@@ -7,7 +7,7 @@
     "paths": {
       "@assets/*": ["./src/assets/*"],
       "@data/*": ["./src/data/*"],
-      "@types/*": ["./src/types/*"],
+      "@projectTypes/*": ["./src/types/*"],
       "@components/*": ["./src/components/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@i18n/*": ["./src/i18n/*"],

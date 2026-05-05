@@ -1,0 +1,70 @@
+---
+lang: es
+slug: prensa
+title: Prensa
+description: Cobertura mediática del documental Y la Lucha Continua.
+---
+
+import { Image } from 'astro:assets'
+import saramago from '@assets/images/saramago.jpg'
+
+<main class="container py-16 pt-20">
+	<h1 class="font-heading text-5xl md:text-7xl font-bold mb-16">Prensa</h1>
+
+	<div class="grid md:grid-cols-3 gap-12">
+		<div class="md:col-span-2">
+			<ul class="space-y-8">
+				<li class="border-b border-black/10 pb-8">
+					<span class="font-heading text-xs uppercase tracking-widest text-m-gray-500 block mb-2">2021</span>
+					<p class="mb-0">
+						Propuesta didáctica para alumnos de 4º de ESO elaborada por Ramon Breu en
+						<a href="http://cinescola.info/" target="_blank" rel="noopener noreferrer">cinescola.info</a>
+					</p>
+				</li>
+				<li class="border-b border-black/10 pb-8">
+					<span class="font-heading text-xs uppercase tracking-widest text-m-gray-500 block mb-2">21 diciembre 2019</span>
+					<p class="mb-1">
+						<span class="italic">L'Informatiu</span> — TVE Catalunya
+					</p>
+					<p class="text-sm text-m-gray-500 mb-0">
+						Reportaje en el programa informativo de TVE Catalunya
+					</p>
+				</li>
+				<li class="border-b border-black/10 pb-8">
+					<span class="font-heading text-xs uppercase tracking-widest text-m-gray-500 block mb-2">27 noviembre 2019</span>
+					<p class="mb-1">
+						<span class="italic">En Directe</span> — Radio 4
+					</p>
+					<p class="text-sm text-m-gray-500 mb-0">
+						La periodista Llucia Oliva nos presenta su último documental «I la lluita continua. Del camp a la construcció de Catalunya».
+					</p>
+				</li>
+				<li class="border-b border-black/10 pb-8">
+					<span class="font-heading text-xs uppercase tracking-widest text-m-gray-500 block mb-2">26 noviembre 2019</span>
+					<p class="mb-1">
+						<span class="italic">Territori clandestí</span> — Radio 4
+					</p>
+					<p class="text-sm text-m-gray-500 mb-0">
+						Programa dedicado al documental y a la lucha de los obreros antifranquistas
+					</p>
+				</li>
+				<li class="border-b border-black/10 pb-8">
+					<span class="font-heading text-xs uppercase tracking-widest text-m-gray-500 block mb-2">14 noviembre 2019</span>
+					<p class="mb-1">
+						<span class="italic">Els Matins</span> — TV3
+					</p>
+					<p class="text-sm text-m-gray-500 mb-0">
+						La lucha social y política de los obreros de la construcción en los años 70
+					</p>
+				</li>
+			</ul>
+		</div>
+		<div class="md:col-span-1">
+			<Image
+				src={saramago}
+				alt="Imagen de prensa"
+				class="w-full object-cover"
+			/>
+		</div>
+	</div>
+</main>

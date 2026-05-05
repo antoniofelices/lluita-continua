@@ -1,0 +1,87 @@
+---
+lang: es
+slug: direccion
+title: Dirección
+description: Llúcia Oliva, directora y guionista del documental Y la Lucha Continua.
+---
+
+import { Image } from "astro:assets"
+import foto from "@assets/images/fotoLlucia-1.jpg"
+import cvEsp from "@assets/images/cv-llucia-oliva-es.pdf"
+import cvEng from "@assets/images/cv-llucia-oliva-en.pdf"
+import teaserEsp from "@assets/videos/teaser-la-lucha-continua-esp-1.mp4"
+import safSub from "@assets/videos/saf-sub.mov"
+
+<main class="container py-16 pt-20">
+	<h1 class="font-heading text-5xl md:text-7xl font-bold mb-16">Dirección</h1>
+
+    <div class="grid md:grid-cols-3 gap-12 mb-16">
+    	<div class="md:col-span-2 max-w-2xl">
+    		<p>
+    			<strong>Llúcia Oliva</strong> es periodista y documentalista independiente.
+    		</p>
+    		<p>«Y la lucha continua» es el tercer documental que ha realizado como documentalista independiente. Su objetivo es recuperar la memoria oral de la resistencia a la dictadura franquista, un esfuerzo de recuperación de la memoria colectiva al que Llúcia Oliva se ha dedicado en estos últimos años.  Fruto de esta labor son también los documentales: "Hereus d'un cardenal proscrit", premio MemoriReus 2018, y "Santuaris de l'antifranquisme" emitido por el programa "Sense Ficció" de TV3</p>
+    		<p>Llúcia Oliva ha trabajado en prensa, radio y televisión. Durante 20 años trabajó en TVE desde donde contribuyó a renovar el contenido y la narrativa de los informativos de la televisión en España. También fue corresponsal y enviada especial a una decena de países. Como corresponsal de TVE en Moscú cubrió el final de la Unión Soviética y como primera corresponsal de TV3 en los Estados Unidos, cubrió la primera administración Reagan.</p>
+    		<p>Ha sido formadora de periodistas en distintas universidades y empresas de televisión en España y en el extranjero.</p>
+    		<p>Es coautora de un libro clásico en las escuelas de periodismo "Las noticias en Radio y Televisión".</p>
+    		<p>Estudió periodismo y filología en la Universitat Autònoma de Barcelona y, gracias a dos becas Fulbright, cursó un master en The University of Wisconsin - Madison (1996) y otro en L'American University de Washington D.C. (1986), en Estados Unidos.</p>
+    		<h2 class="font-heading text-xs uppercase tracking-widest text-m-red-500 mb-4 mt-10">Documentales anteriores</h2>
+    		<ul class="space-y-2">
+    			<li><span class="italic">Hereus d'un cardenal proscrit</span> — Premio MemoriReus 2018</li>
+    			<li><span class="italic">Santuaris de l'antifranquisme</span> — Emitido en Sense Ficció (TV3)</li>
+    			<li><span class="italic">Pesadillas Americanas</span> — Premio American Association of Hispanic Journalists al mejor documental 2009</li>
+    			<li><span class="italic">En Nombre de Dios</span> — Premio American Association of Hispanic Journalists al mejor documental 2006</li>
+    			<li><span class="italic">Sierra Leone, marcados por la guerra</span> — Premio Asociación de Prensa de Madrid 2006</li>
+    			<li><span class="italic">Objetivo: matar a Franco</span> (1984)</li>
+    		</ul>
+    	</div>
+    	<div class="md:col-span-1">
+    		<Image
+    			src={foto}
+    			alt="Llúcia Oliva, directora"
+    			class="w-full object-cover"
+    		/>
+    	</div>
+    </div>
+
+    <section class="mb-16 border-t border-black/10 pt-12">
+    	<h2 class="font-heading text-sm uppercase tracking-widest mb-6">Descargar CV</h2>
+    	<div class="flex flex-wrap gap-4">
+    		<a
+    			href={cvEsp}
+    			download
+    			class="inline-block font-heading text-xs uppercase tracking-widest border border-black px-6 py-3 hover:bg-black hover:text-white transition-colors no-underline! border-solid!"
+    		>CV en Español</a>
+    		<a
+    			href={cvEng}
+    			download
+    			class="inline-block font-heading text-xs uppercase tracking-widest border border-black px-6 py-3 hover:bg-black hover:text-white transition-colors no-underline! border-solid!"
+    		>CV in English</a>
+    	</div>
+    </section>
+
+    <section class="border-t border-black/10 pt-12">
+    	<h2 class="font-heading text-sm uppercase tracking-widest mb-8">Teasers</h2>
+    	<div class="grid md:grid-cols-2 gap-8">
+    		<div>
+    			<video
+    				class="w-full aspect-video bg-black"
+    				controls
+    				preload="metadata"
+    				src={teaserEsp}
+    			></video>
+    			<p class="font-heading text-xs text-m-gray-500 uppercase tracking-widest mt-2">Teaser en español</p>
+    		</div>
+    		<div>
+    			<video
+    				class="w-full aspect-video bg-black"
+    				controls
+    				preload="metadata"
+    				src={safSub}
+    			></video>
+    			<p class="font-heading text-xs text-m-gray-500 uppercase tracking-widest mt-2">Teaser con subtítulos en inglés</p>
+    		</div>
+    	</div>
+    </section>
+
+</main>

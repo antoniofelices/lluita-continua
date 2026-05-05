@@ -1,26 +1,21 @@
 ---
 import MenuMain from './MenuMain.astro'
 import LanguagePicker from './LanguagePicker.astro'
-import { useTranslations, useTranslatedPath } from '@i18n/utils';
-import type { LangType } from '@i18n/ui';
-
-const lang = (Astro.currentLocale ?? 'ca') as LangType;
-const t = useTranslations(lang);
-const translatePath = useTranslatedPath(lang, Astro.currentLocale);
+import { t } from '@i18n/index.ts';
 ---
 
 <header class="sticky top-0 z-50 bg-white border-b border-black/10">
 	<div class="container flex justify-between items-center h-16">
-		<a href={translatePath('/')} class="flex items-baseline gap-3 no-underline! border-none!">
-			<span class="font-heading text-sm font-bold uppercase tracking-widest text-black">{t('title')}</span>
-			<span class="text-xs text-m-gray-500 uppercase tracking-widest hidden md:inline">{t('tagline')}</span>
+		<a href="/" class="flex items-baseline gap-3 no-underline! border-none!">
+			<span class="font-heading text-sm font-bold uppercase tracking-widest text-black">{t.title}</span>
+			<span class="text-xs text-m-gray-500 uppercase tracking-widest hidden md:inline">{t.tagline}</span>
 		</a>
 		<div class="flex items-center gap-2">
 			<button
 				id="mobile-menu-btn"
 				class="lg:hidden p-2"
 				type="button"
-				aria-label={t('accessMenu')}
+				aria-label={t.accessMenu}
 			>
 				<svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="22" height="18" viewBox="0 0 22 18" fill="currentColor" aria-hidden="true">
 					<rect y="0" width="22" height="2.5" rx="1"/>

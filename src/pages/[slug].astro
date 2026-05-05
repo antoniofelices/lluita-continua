@@ -1,0 +1,23 @@
+---
+import { getCollection, render } from 'astro:content'
+import Layout from '@layouts/Layout.astro'
+
+export async function getStaticPaths() {
+	const lang = import.meta.env.LOCALE ?? 'ca'
+	const allPages = await getCollection('pages')
+	const pages = allPages.filter(
+		p => p.data.lang === lang && p.data.slug !== 'home'
+	)
+
+	return pages.map(page => ({
+		params: { slug: page.data.slug },
+		props: { page },
+	}))
+}
+
+const { page } = Astro.props
+const { Content } = await render(page)
+---
+<Layout title={page.data.title} description={page.data.description} slug={page.data.slug}>
+	<Content />
+</Layout>

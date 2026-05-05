@@ -1,0 +1,55 @@
+---
+lang: es
+slug: materiales
+title: Materiales
+description: "Materiales del documental Y la Lucha Continua: cartel, DVD y propuesta didáctica."
+---
+
+import { Image } from "astro:assets"
+import cartell from "@assets/images/Cartell_I_laLuchaContinua-A3.jpg"
+import caratula from "@assets/images/caratula_DVD_ESP.jpg"
+
+<main class="container py-16 pt-20">
+	<h1 class="font-heading text-5xl md:text-7xl font-bold mb-16">Materiales</h1>
+
+    <div class="max-w-2xl">
+    	<section class="mb-14">
+    		<h2 class="font-heading text-xs uppercase tracking-widest text-m-red-500 mb-6">Cartel y DVD</h2>
+    		<p>
+    			Diseño gráfico de <strong>Pilar Villuendas</strong> y <strong>Alícia Gómez Villuendas</strong>.
+    		</p>
+    		<div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+    			<figure>
+    				<Image
+    					src={cartell}
+    					alt="Cartel Y la Lucha Continua (formato A3)"
+    					class="w-full object-contain border border-black/10"
+    				/>
+    				<figcaption class="font-heading text-xs text-m-gray-500 uppercase tracking-widest mt-2">Cartel A3</figcaption>
+    			</figure>
+    			<figure>
+    				<Image
+    					src={caratula}
+    					alt="Carátula DVD Y la Lucha Continua"
+    					class="w-full object-contain border border-black/10"
+    				/>
+    				<figcaption class="font-heading text-xs text-m-gray-500 uppercase tracking-widest mt-2">Carátula DVD</figcaption>
+    			</figure>
+    		</div>
+    	</section>
+
+    	<section class="mb-14">
+    		<h2 class="font-heading text-xs uppercase tracking-widest text-m-red-500 mb-6">Propuesta didáctica</h2>
+    		<p>
+    			Ramon Breu ha elaborado una propuesta didáctica en catalán para alumnos de secundaria, disponible en:
+    		</p>
+    		<a
+    			href="http://cinescola.info/"
+    			target="_blank"
+    			rel="noopener noreferrer"
+    			class="inline-block font-heading text-xs uppercase tracking-widest border border-black px-6 py-3 hover:bg-black hover:text-white transition-colors no-underline! border-solid!"
+    		>cinescola.info</a>
+    	</section>
+    </div>
+
+</main>

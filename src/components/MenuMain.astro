@@ -1,26 +1,20 @@
 ---
-import { useTranslations, useTranslatedPath } from '@i18n/utils';
-import type { LangType } from '@i18n/ui';
-
-const lang = (Astro.currentLocale ?? 'ca') as LangType;
-const t = useTranslations(lang);
-const translatePath = useTranslatedPath(lang, Astro.currentLocale);
+import { t } from '@i18n/index.ts';
 
 const currentPath = Astro.url.pathname;
 
 const navItems = [
-	{ key: 'projections', label: t('navProjections') },
-	{ key: 'materials', label: t('navMaterials') },
-	{ key: 'press', label: t('navPress') },
-	{ key: 'directing', label: t('navDirecting') },
-] as const;
+	{ label: t.nav.projections.label, href: t.nav.projections.href },
+	{ label: t.nav.materials.label, href: t.nav.materials.href },
+	{ label: t.nav.press.label, href: t.nav.press.href },
+	{ label: t.nav.directing.label, href: t.nav.directing.href },
+];
 ---
 
 <nav>
 	<ul class="flex flex-col lg:flex-row gap-6 lg:gap-0 m-0">
-		{navItems.map(({ key, label }) => {
-			const href = translatePath(`/${key}`);
-			const isActive = currentPath.includes(key) || currentPath.includes((translatePath(`/${key}`)));
+		{navItems.map(({ label, href }) => {
+			const isActive = currentPath === href || currentPath.startsWith(href + '/');
 			return (
 				<li>
 					<a

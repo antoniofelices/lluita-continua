@@ -1,4 +1,4 @@
-export interface Projection {
+export type Projection = {
   date: string
   place: string
   city: string
