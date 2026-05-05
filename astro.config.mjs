@@ -11,6 +11,7 @@ export default defineConfig({
   integrations: [mdx()],
   vite: {
     plugins: [tailwindcss()],
+    assetsInclude: ["**/*.pdf"],
     define: {
       "import.meta.env.LOCALE": JSON.stringify(lang),
     },
