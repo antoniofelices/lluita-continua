@@ -14,7 +14,7 @@
       "@i18n/*": ["./src/i18n/*"],
       "@layouts/*": ["./src/layouts/*"],
       "@styles/*": ["./src/styles/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@lib/*": ["./src/lib/*"]
     }
   }
 }

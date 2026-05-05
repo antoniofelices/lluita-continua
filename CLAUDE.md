@@ -35,7 +35,7 @@ Import translations via the `@i18n` path alias: `import { lang, urls } from '@i1
 
 Two collections:
 - **pages** — MDX files under `src/content/pages/{ca,es}/`. Frontmatter: `lang`, `slug`, `title`, `description`. Pages are filtered by `import.meta.env.LOCALE` in `getStaticPaths()`.
-- **projections** — JSON files (`src/content/projections/ca.json` and `es.json`). A custom loader transforms each file into collection entries. Schema includes `date`, `place`, `city`, `description?`, `link?`, and `cancelled` flag.
+- **projections** — JSON files (`src/content/projections/ca.json` and `es.json`). A custom loader (`src/lib/projections/loader.ts`) transforms each file into collection entries. Schema includes `date`, `place`, `city`, `description?`, `link?`, and `cancelled` flag.
 
 ### Routing
 
@@ -44,7 +44,7 @@ Two collections:
 
 ### Path aliases (tsconfig)
 
-`@assets`, `@components`, `@i18n`, `@layouts`, `@utils`, `@hooks`, `@styles`, `@content`, `@data`, `@projectTypes`
+`@assets`, `@components`, `@i18n`, `@layouts`, `@lib`, `@utils`, `@hooks`, `@styles`, `@content`, `@data`, `@projectTypes`
 
 ### Styling
 
